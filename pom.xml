@@ -42,7 +42,11 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M9</version>
         <configuration>
-          <useModulePath>false</useModulePath>
+          <providers>
+            <provider>
+              <name>junit-platform</name>
+            </provider>
+          </providers>
         </configuration>
       </plugin>
 
@@ -62,4 +66,3 @@
     </plugins>
   </build>
 </project>
-
