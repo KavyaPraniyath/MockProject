@@ -2,7 +2,7 @@ package problems;
 
 import java.util.Arrays;
 
-public class LC253 {
+public class LC253MinMeetingRooms {
     public int minMeetingRooms(int[][] intervals) {
         int n = intervals.length;
         int[] start = new int[n];
@@ -37,7 +37,7 @@ public class LC253 {
      */
     public static void main(String[] args) {
         int[][] intervals = {{0,30}, {5,10}, {15,20}};
-        LC253 lc253 = new LC253();
+        LC253MinMeetingRooms lc253 = new LC253MinMeetingRooms();
         System.out.println(lc253.minMeetingRooms(intervals));
     }
 }

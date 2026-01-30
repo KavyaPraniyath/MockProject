@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-public class LC353 {
+public class LC353SnakeGame {
     private final int width;
     private final int height;
     private final int[][] food;
@@ -13,7 +13,7 @@ public class LC353 {
     Deque<Integer> snake;
     Set<Integer> body;
 
-    public LC353(int width, int height, int[][] food) {
+    public LC353SnakeGame(int width, int height, int[][] food) {
         this.width = width;
         this.height = height;
         this.food = food;
@@ -75,7 +75,7 @@ public class LC353 {
         int width = 3;
         int height = 2;
         int[][] food = {{1, 2}, {0, 1}};
-        LC353 snakeGame = new LC353(width, height, food);
+        LC353SnakeGame snakeGame = new LC353SnakeGame(width, height, food);
 
         System.out.println(snakeGame.move("R")); // Output: 0
         System.out.println(snakeGame.move("D")); // Output: 0

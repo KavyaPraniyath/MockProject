@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class LC2034 {
+public class LC2034StockPriceFluctuation {
     Map<Integer, Integer> record;//Store the timestamp and price
     TreeMap<Integer, Integer> prices; //store the price and occurances
     int latestTime = 0;
 
-    public LC2034() {
+    public LC2034StockPriceFluctuation() {
         record = new HashMap<>();
         prices = new TreeMap<>();
     }
@@ -40,7 +40,7 @@ public class LC2034 {
     }
 
     public static void main(String[] args) {
-        LC2034 lc2034 = new LC2034();
+        LC2034StockPriceFluctuation lc2034 = new LC2034StockPriceFluctuation();
         lc2034.update(1, 10);
         lc2034.update(2, 5);
         System.out.println(lc2034.current());
