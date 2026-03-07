@@ -1,4 +1,4 @@
-package problems.ms;
+package problems.microsoft;
 
 import java.util.ArrayList;
 import java.util.List;
