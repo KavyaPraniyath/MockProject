@@ -1,0 +1,159 @@
+Design a Scalable Job Scheduler with Kafka Integration
+Problem Statement
+
+Design a scalable job scheduling system that periodically reads pending tasks from a database and publishes them to a Kafka topic for downstream processing.
+
+The system should expose APIs to allow clients to create scheduling requests, store them in the database, and ensure they are processed asynchronously by consumers.
+
+The design should focus on scalability, fault tolerance, access control, and extensibility.
+
+--------------------
+
+Functional Requirements
+
+Create Job API
+
+Provide a REST API that allows clients to submit jobs.
+
+The API should store the job metadata in a database.
+
+Scheduler
+
+A scheduler should periodically scan the database for pending jobs.
+
+It should pick eligible jobs and publish messages to a Kafka topic.
+
+Kafka Processing
+
+Messages published to Kafka should be processed by different consumers.
+
+Some message types should be processed only by a specific consumer.
+
+Role-based API Access
+
+Two users can access the same API through the same client.
+
+One user should have limited access, while another should have full access.
+
+---------------------
+Design Considerations
+1. Database Design
+
+Design the schema for storing jobs.
+
+Example fields:
+
+job_id
+
+job_type
+
+payload
+
+status (PENDING, PROCESSING, COMPLETED, FAILED)
+
+scheduled_time
+
+retry_count
+
+created_at
+
+updated_at
+
+Questions to consider:
+
+How will the scheduler efficiently fetch pending jobs?
+
+How will you avoid multiple schedulers picking the same job?
+----------------------
+
+2. Scheduler Design
+
+Explain how the scheduler works.
+
+Points to consider:
+
+Polling vs event-based scheduling
+
+Batch fetching jobs
+
+Handling failures and retries
+
+Idempotency
+
+Distributed scheduling when multiple scheduler instances exist
+-----------------------
+
+3. Kafka Topic Design
+
+Design the Kafka architecture.
+
+Consider:
+
+Topic structure
+
+Partition strategy
+
+Message keys
+
+Ordering guarantees
+
+Retry and DLQ handling
+-------------------------
+
+4. Consumer Isolation
+
+If a new message type is pushed to Kafka:
+
+Only Consumer A should process it.
+
+Other consumers should ignore it.
+
+Possible approaches:
+
+Separate topics
+
+Consumer groups
+
+Message filtering
+
+Routing based on message type
+------------------------------
+
+5. Access Control
+
+Two users access the same API:
+
+User A → Limited access
+
+User B → Full access
+
+How would you implement this?
+
+Possible solutions:
+
+Role Based Access Control (RBAC)
+
+OAuth/JWT based authorization
+
+API gateway policies
+--------------------------
+
+6. Performance Optimization
+
+How would you make the system highly performant?
+
+Consider:
+
+Batch processing
+
+Kafka partitioning
+
+Database indexing
+
+Horizontal scaling
+
+Caching
+
+Async processing
+
+Rate limiting
