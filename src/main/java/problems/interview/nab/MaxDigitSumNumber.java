@@ -4,8 +4,33 @@ public class MaxDigitSumNumber {
 
     public static void main(String[] args) {
         String num = "98";
-        System.out.println(solution("489"));
+        System.out.println(solution1(num));
     }
+
+    public static String solution1(String S) {
+        int num = Integer.parseInt(S);
+        int maxNum = 0;
+        int maxSum = 0;
+        for (int i = num -1; i>=1; i--) {
+            int sum = getSum(i);
+            if (sum > maxSum) {
+                maxSum = sum;
+                maxNum = i;
+            }
+        }
+        return Integer.toString(maxNum);
+    }
+
+    private static int getSum(int num) {
+        int sum = 0;
+        while (num != 0) {
+            sum = sum + num % 10;
+            num = num/10;
+        }
+
+        return sum;
+    }
+
     public static String solution(String S) {
 
         String best = "";
