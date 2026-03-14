@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InsertInterval {
-    public int[][] insert(int[][] intervals, int[] newInterval) {
+    public static int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> res = new ArrayList<>();
         int i = 0;
         int n = intervals.length;
@@ -25,5 +25,14 @@ public class InsertInterval {
             i++;
         }
         return res.toArray(new int[res.size()][]);
+    }
+
+    public static void main(String[] args) {
+        int[][] intervals = new int[][]{{1,3},{6,9}};
+        int[] newInterval = new int[]{2,5};
+        int[][] ans = insert(intervals, newInterval);
+        for (int[] inter : ans) {
+            System.out.println("[" + inter[0] + "," + inter[1] + "]");
+        }
     }
 }
